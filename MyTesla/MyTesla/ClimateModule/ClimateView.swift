@@ -64,7 +64,6 @@ struct ClimateView: View {
 //            Circle()
 //                .trim(
 //                from: 0.0,
-//                to: <#T##CGFloat#>)
         }
     }
     
