@@ -29,6 +29,7 @@ struct StartView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
     
     private var settingsButtonView: some View {
@@ -41,7 +42,6 @@ struct StartView: View {
                 Image(.gear)
             }
         }
-        
     }
     
     private var hiTextView: some View {
@@ -53,11 +53,11 @@ struct StartView: View {
     }
     
     private var welcomeTextView: some View {
-        Text("Welcome back")
-            .bold()
-            .foregroundStyle(.white)
-            .font(.system(size: 35))
-            .opacity(isCarClose ? 0 : 1)
+            Text("Welcome back")
+                .bold()
+                .foregroundStyle(.white)
+                .font(.system(size: 35))
+                .opacity(isCarClose ? 0 : 1)
     }
     
     private var carImageView: some View {
@@ -71,10 +71,10 @@ struct StartView: View {
     
     private var lockCarControlView: some View {
         Button {
-            withAnimation {
+            withAnimation(.linear(duration: 0.5)) {
                 isCarClose.toggle()
+                isCarShadowClose.toggle()
             }
-            isCarShadowClose.toggle()
         } label: {
             HStack(alignment: .center) {
                 Text(isCarClose ? "Unlock" : "Lock")

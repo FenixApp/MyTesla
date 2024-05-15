@@ -50,7 +50,7 @@ struct MainView: View {
     private var carView: some View {
         Image(isCarClose ? .closeCar : .car)
             .resizable()
-            .frame(height: 200)
+            .frame(height: 220)
             .padding(.horizontal)
             .padding(.bottom, 40)
             .shadow(color: .white.opacity(0.6), radius: 15, x: 10, y: 10)

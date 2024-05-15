@@ -14,6 +14,7 @@ struct ClimateView: View {
                 VStack {
                     headView
                     circleView
+                        .padding(.top, 30)
                     disclosureGroupView
                     Spacer()
                 }
@@ -53,13 +54,13 @@ struct ClimateView: View {
                 .frame(width: 200, height: 200)
                 .shadow(color: .lightGrayShadow, radius: 20, x: -25, y: -25)
                 .shadow(color: .darkShadow, radius: 7, x: 20, y: 20)
-//                .overlay(
-//                    Circle()
-//                        .fill(LinearGradient(colors: [.darkShadow, .lightShadow], startPoint: .topLeading, endPoint: .init(x: 0.5, y: 0.5)))
-//                        .frame(width: 140, height: 140)
-//                        .shadow(color: .lightShadow, radius: 7, x: -7, y: -7)
-//                        .shadow(color: .darkShadow, radius: 7, x: 7, y: 7)
-//                    )
+                .overlay(
+                    Circle()
+                        .fill(LinearGradient(colors: [.darkShadow, .lightShadow], startPoint: .topLeading, endPoint: .init(x: 0.5, y: 0.5)))
+                        .frame(width: 140, height: 140)
+                        .shadow(color: .lightShadow, radius: 7, x: -7, y: -7)
+                        .shadow(color: .darkShadow, radius: 7, x: 7, y: 7)
+                    )
 //            Circle()
 //                .trim(
 //                from: 0.0,
@@ -69,35 +70,106 @@ struct ClimateView: View {
     
     private var disclosureGroupView: some View {
         DisclosureGroup("", isExpanded: $revealDetails) {
-            VStack(spacing: 40) {
+            VStack(spacing: -10) {
                 acView
-                acView
-                acView
-                acView
+                fanView
+                heatView
+                autoView
             }
         }
         .padding()
     }
-    @State private var celsius: Double = 0
+
     private var acView: some View {
-        HStack(spacing: 30) {
+        HStack(spacing: 20) {
             Text("Ac")
+                .bold()
                 .foregroundStyle(.gray)
-                .frame(width: 40)
-            Button {
-                
-            } label: {
+                .frame(width: 41)
+                .padding(.bottom)
+            ZStack {
+                Button {
+                    
+                } label: {
+                    Image(.climateButton)
+                }
                 Image(.snow)
-                    .frame(width: 20, height: 20)
-                    .neumorphismSelectedCircleStyle()
-                    .overlay(
-                        Circle()
-                            .stroke(LinearGradient(colors: [.black.opacity(0.5), .lightShadow], startPoint: .top, endPoint: .init(x: 0.5, y: 0.7)), lineWidth: 2)
-                            .opacity(0)
-                        )
+                    .padding(.bottom, 10)
+                    .padding(.trailing, 6)
             }
-            Slider(value: $celsius, in: 0...100)
+            .frame(width: 50, height: 50)
+            ClimateSliderView()
         }
+        .padding()
+    }
+    
+    private var fanView: some View {
+        HStack(spacing: 20) {
+            Text("Fan")
+                .bold()
+                .foregroundStyle(.gray)
+                .frame(width: 41)
+                .padding(.bottom)
+            ZStack {
+                Button {
+                    
+                } label: {
+                    Image(.climateButton)
+                }
+                Image(.wind)
+                    .padding(.bottom, 10)
+                    .padding(.trailing, 6)
+            }
+            .frame(width: 50, height: 50)
+            ClimateSliderView()
+        }
+        .padding()
+    }
+    
+    private var heatView: some View {
+        HStack(spacing: 20) {
+            Text("Heat")
+                .bold()
+                .foregroundStyle(.gray)
+                .frame(width: 41)
+                .padding(.bottom)
+            ZStack {
+                Button {
+                    
+                } label: {
+                    Image(.climateButton)
+                }
+                Image(.drop)
+                    .padding(.bottom, 10)
+                    .padding(.trailing, 6)
+            }
+            .frame(width: 50, height: 50)
+            ClimateSliderView()
+        }
+        .padding()
+    }
+    
+    private var autoView: some View {
+        HStack(spacing: 20) {
+            Text("Auto")
+                .bold()
+                .foregroundStyle(.gray)
+                .frame(width: 41)
+                .padding(.bottom)
+            ZStack {
+                Button {
+                    
+                } label: {
+                    Image(.climateButton)
+                }
+                Image(.timer)
+                    .padding(.bottom, 10)
+                    .padding(.trailing, 6)
+            }
+            .frame(width: 50, height: 50)
+            ClimateSliderView()
+        }
+        .padding()
     }
 }
 
