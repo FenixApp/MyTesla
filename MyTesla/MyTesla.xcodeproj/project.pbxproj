@@ -16,6 +16,7 @@
 		C46121F02BF3AD10007FFCD7 /* NeumorphismSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46121EF2BF3AD10007FFCD7 /* NeumorphismSelected.swift */; };
 		C46121F22BF3AD2A007FFCD7 /* NeumorphismUnSelectedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46121F12BF3AD2A007FFCD7 /* NeumorphismUnSelectedCircle.swift */; };
 		C46121F62BF3AF18007FFCD7 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46121F52BF3AF18007FFCD7 /* StartView.swift */; };
+		C4E8E41F2BF3E2D800D4C2AA /* ClimateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8E41E2BF3E2D800D4C2AA /* ClimateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		C46121EF2BF3AD10007FFCD7 /* NeumorphismSelected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphismSelected.swift; sourceTree = "<group>"; };
 		C46121F12BF3AD2A007FFCD7 /* NeumorphismUnSelectedCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphismUnSelectedCircle.swift; sourceTree = "<group>"; };
 		C46121F52BF3AF18007FFCD7 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		C4E8E41E2BF3E2D800D4C2AA /* ClimateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				C46121DA2BF29B5A007FFCD7 /* MyTeslaApp.swift */,
 				C46121F32BF3ADF1007FFCD7 /* StartModule */,
 				C46121F42BF3AE02007FFCD7 /* MainModule */,
+				C4E8E41D2BF3E25A00D4C2AA /* ClimateModule */,
 				C46121EB2BF3AC7A007FFCD7 /* CustomControls */,
 				C46121E82BF3AAB3007FFCD7 /* Extension */,
 				C46121DE2BF29B5C007FFCD7 /* Assets.xcassets */,
@@ -120,6 +123,14 @@
 				C46121DC2BF29B5A007FFCD7 /* MainView.swift */,
 			);
 			path = MainModule;
+			sourceTree = "<group>";
+		};
+		C4E8E41D2BF3E25A00D4C2AA /* ClimateModule */ = {
+			isa = PBXGroup;
+			children = (
+				C4E8E41E2BF3E2D800D4C2AA /* ClimateView.swift */,
+			);
+			path = ClimateModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +209,7 @@
 				C46121EA2BF3AAD1007FFCD7 /* View+Extension.swift in Sources */,
 				C46121DB2BF29B5A007FFCD7 /* MyTeslaApp.swift in Sources */,
 				C46121F22BF3AD2A007FFCD7 /* NeumorphismUnSelectedCircle.swift in Sources */,
+				C4E8E41F2BF3E2D800D4C2AA /* ClimateView.swift in Sources */,
 				C46121F62BF3AF18007FFCD7 /* StartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

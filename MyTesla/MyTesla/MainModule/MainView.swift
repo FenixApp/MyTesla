@@ -11,9 +11,10 @@ struct MainView: View {
     
     @State var isCarClose = false
     @State var tagSelected = 0
+    @State var isClimateShow = false
     
     var body: some View {
-        backgroundStackView {
+        backgroundStackView(isLock: false) {
             VStack {
                 headerView
                 carView
@@ -25,6 +26,7 @@ struct MainView: View {
                 }
                 Spacer()
             }
+            .navigationBarBackButtonHidden(true)
         }
     }
     
@@ -61,21 +63,29 @@ struct MainView: View {
     private var controlPanelView: some View {
         HStack(spacing: 30) {
             ForEach(1..<5) { index in
-                Button {
-                    withAnimation {
-                        tagSelected = index
-                    }
+                NavigationLink(isActive: $isClimateShow) {
+                    ClimateView()
                 } label: {
-                    Image("\(index)")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .neumorphismSelectedCircleStyle()
-                        .overlay(
-                        Circle()
-                            .stroke(gradient, lineWidth: 2)
-                            .opacity(tagSelected == index ? 1 : 0)
-                        )
+                    Button {
+                        if index == 2 {
+                            isClimateShow.toggle()
+                        }
+                        withAnimation {
+                            tagSelected = index
+                        }
+                    } label: {
+                        Image("\(index)")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .neumorphismSelectedCircleStyle()
+                            .overlay(
+                            Circle()
+                                .stroke(gradient, lineWidth: 2)
+                                .opacity(tagSelected == index ? 1 : 0)
+                            )
+                    }
                 }
+                
             }
         }
         .padding()
@@ -89,9 +99,9 @@ struct MainView: View {
                 isCarClose.toggle()
             }
         } label: {
-            HStack {
+            HStack(spacing: 10) {
                 Label {
-                    Text(isCarClose ? "Закрыть" : "Открыть")
+                    Text(isCarClose ? "Lock" : "Unlock")
                         .foregroundStyle(.white)
                 } icon: {
                     Image(systemName: isCarClose ? "lock.open.fill" : "lock.fill")
@@ -99,6 +109,7 @@ struct MainView: View {
                         .neumorphismSelectedCircleStyle()
                 }
             }
+            .frame(width: 120)
             .padding()
             .background(RoundedRectangle(cornerRadius: 50).fill(.lightBackground))
             .neumorphismSelectedStyle()

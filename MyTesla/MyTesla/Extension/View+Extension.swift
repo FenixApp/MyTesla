@@ -20,10 +20,10 @@ extension View {
         modifier(NeumorphismUnSelectedCircle())
     }
     
-    func backgroundStackView<Content: View>(content: () -> Content) -> some View {
+    func backgroundStackView<Content: View>(isLock: Bool = true, content: () -> Content) -> some View {
         ZStack {
             Rectangle()
-                .fill(.lightBackground)
+                .fill(isLock ? LinearGradient(colors: [.lightShadow, .black], startPoint: .top, endPoint: .init(x: 0.5, y: 0.4)) : LinearGradient(colors: [.lightBackground], startPoint: .top, endPoint: .bottom))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
             content()
