@@ -20,6 +20,7 @@
 		C4E8E4222BF5215800D4C2AA /* ClimateSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8E4212BF5215800D4C2AA /* ClimateSliderView.swift */; };
 		C4E8E4252BF52EC700D4C2AA /* TeslaLogoShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8E4242BF52EC700D4C2AA /* TeslaLogoShape.swift */; };
 		C4E8E4272BF52F1200D4C2AA /* TeslaLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8E4262BF52F1200D4C2AA /* TeslaLogoView.swift */; };
+		C4E8E4292BF6577100D4C2AA /* ClimateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8E4282BF6577100D4C2AA /* ClimateViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		C4E8E4212BF5215800D4C2AA /* ClimateSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateSliderView.swift; sourceTree = "<group>"; };
 		C4E8E4242BF52EC700D4C2AA /* TeslaLogoShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaLogoShape.swift; sourceTree = "<group>"; };
 		C4E8E4262BF52F1200D4C2AA /* TeslaLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaLogoView.swift; sourceTree = "<group>"; };
+		C4E8E4282BF6577100D4C2AA /* ClimateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				C4E8E41E2BF3E2D800D4C2AA /* ClimateView.swift */,
+				C4E8E4282BF6577100D4C2AA /* ClimateViewModel.swift */,
 			);
 			path = ClimateModule;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				C46121EE2BF3ACCE007FFCD7 /* NeumorphismUnSelected.swift in Sources */,
 				C46121F02BF3AD10007FFCD7 /* NeumorphismSelected.swift in Sources */,
 				C46121EA2BF3AAD1007FFCD7 /* View+Extension.swift in Sources */,
+				C4E8E4292BF6577100D4C2AA /* ClimateViewModel.swift in Sources */,
 				C46121DB2BF29B5A007FFCD7 /* MyTeslaApp.swift in Sources */,
 				C46121F22BF3AD2A007FFCD7 /* NeumorphismUnSelectedCircle.swift in Sources */,
 				C4E8E4252BF52EC700D4C2AA /* TeslaLogoShape.swift in Sources */,

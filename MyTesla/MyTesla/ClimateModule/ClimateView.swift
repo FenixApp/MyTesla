@@ -8,23 +8,28 @@
 import SwiftUI
 
 struct ClimateView: View {
+    
+    private enum Constants {
+        static let celsusString = "º C"
+    }
+    
     var body: some View {
         backgroundStackView(isLock: false) {
             ZStack {
                 VStack {
                     headView
                     circleView
-                        .padding(.top, 30)
                     disclosureGroupView
                     Spacer()
                 }
             }
         }
         .navigationBarBackButtonHidden(true)
+        .environmentObject(climateViewModel)
     }
     
     @Environment(\.presentationMode) private var presentation
-    @State var revealDetails = true
+    @StateObject private var climateViewModel = ClimateViewModel()
     
     private var headView: some View {
         HStack(alignment: .center, spacing: 25) {
@@ -61,14 +66,31 @@ struct ClimateView: View {
                         .shadow(color: .lightShadow, radius: 7, x: -7, y: -7)
                         .shadow(color: .darkShadow, radius: 7, x: 7, y: 7)
                     )
-//            Circle()
-//                .trim(
-//                from: 0.0,
+            Circle()
+                .trim(
+                    from: 0.0,
+                    to: climateViewModel.circleProgress
+                )
+                .stroke(climateViewModel.selectedColor, style: StrokeStyle(
+                    lineWidth: 25,
+                    lineCap: .round
+                ))
+                .shadow(color: climateViewModel.selectedColor, radius: 7)
+                .frame(height: 210)
+                .rotationEffect(.degrees(-110))
+                
+
+            Text(
+                "\(climateViewModel.currentCelsus)\(Constants.celsusString)"
+            )
+            .font(.system(size: 30, weight: .bold, design: .default))
+//            .opacity(climateViewModel.isOnClimate ? 1 : 0)
         }
+        .padding(.top, 10)
     }
     
     private var disclosureGroupView: some View {
-        DisclosureGroup("", isExpanded: $revealDetails) {
+        DisclosureGroup("", isExpanded: $climateViewModel.isRevealDetails) {
             VStack(spacing: -10) {
                 acView
                 fanView
@@ -120,7 +142,7 @@ struct ClimateView: View {
                     .padding(.trailing, 6)
             }
             .frame(width: 50, height: 50)
-            ClimateSliderView()
+            fakeSliderView
         }
         .padding()
     }
@@ -143,7 +165,7 @@ struct ClimateView: View {
                     .padding(.trailing, 6)
             }
             .frame(width: 50, height: 50)
-            ClimateSliderView()
+            fakeSliderView
         }
         .padding()
     }
@@ -166,9 +188,23 @@ struct ClimateView: View {
                     .padding(.trailing, 6)
             }
             .frame(width: 50, height: 50)
-            ClimateSliderView()
+            fakeSliderView
         }
         .padding()
+    }
+    
+    private var fakeSliderView: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 2)
+                .fill(LinearGradient(
+                    colors: [.black.opacity(0.5), .lightShadow],
+                    startPoint: .top,
+                    endPoint: .init(x: 0.5, y: 0.7)
+                ))
+                .frame(width: 200, height: 8)
+            Image(.knob)
+                .offset(x: -85, y: 5)
+        }
     }
 }
 
