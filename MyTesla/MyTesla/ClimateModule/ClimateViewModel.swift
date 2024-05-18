@@ -26,29 +26,29 @@ final class ClimateViewModel: ObservableObject {
     func getCircleGradus() {
         circleProgress = 1.0 - ((maxCelsus - CGFloat(currentCelsus)) / minCelsus)
     }
-
+    
     func makeMinimumValueText(sliderOffset: CGFloat) {
         currentCelsus = Int((sliderOffset + 100) / sliderPxPerStep()) + Int(minCelsus)
         getCircleGradus()
     }
-
+    
     func increaseValue() {
         guard currentCelsus < Int(maxCelsus) else { return }
         currentCelsus += 1
     }
-
+    
     func decreaseValue() {
         guard currentCelsus > Int(minCelsus) else { return }
         currentCelsus -= 1
     }
-
+    
     func sliderMove(value: DragGesture.Value) -> CGFloat {
         isSliderOn = true
         let stpCnt = floorf(Float(value.location.x / sliderPxPerStep()))
         makeMinimumValueText(sliderOffset: CGFloat(stpCnt) * sliderPxPerStep())
         return CGFloat(stpCnt) * sliderPxPerStep()
     }
-
+    
     private func sliderPxPerStep() -> CGFloat {
         sliderStep * (sliderWidth / sliderMaxValue)
     }

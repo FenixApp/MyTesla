@@ -11,8 +11,8 @@ import SwiftUI
 struct MyTeslaApp: App {
     var body: some Scene {
         WindowGroup {
-//            TeslaLogoView()
-            ClimateView()
+            TeslaLogoView()
+//            ClimateView()
                 .environment(\.colorScheme, .dark)
         }
     }

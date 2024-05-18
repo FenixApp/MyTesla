@@ -22,6 +22,10 @@ struct ClimateView: View {
                     disclosureGroupView
                     Spacer()
                 }
+                BottomSheetView()
+                if climateViewModel.isAlertShow {
+                    alertView
+                }
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -44,12 +48,48 @@ struct ClimateView: View {
                 .font(.system(size: 20))
                 .padding(.bottom, 10)
             Button {
-                
+                withAnimation {
+                    climateViewModel.isAlertShow.toggle()
+                }
             } label: {
                 Image(.gear)
             }
         }
         .padding(.horizontal)
+    }
+    
+    private var alertView: some View {
+        VStack {
+            Text("Tesla support")
+                .fontWeight(.bold)
+                .font(.title3)
+                .foregroundStyle(.white)
+            if let url = URL(string: "https://www.tesla.com/support") {
+                Link("Tesla support", destination: url)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .foregroundColor(.blue)
+                    .padding(.vertical)
+                Button("Cancel") {
+                    withAnimation {
+                        climateViewModel.isAlertShow.toggle()
+                    }
+                }
+                .foregroundColor(.red)
+                .font(.system(size: 20, weight: .regular, design: .default))
+            }
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.lightShadow)
+        )
+        .frame(width: 250)
+        .padding(.top, 50)
+        .shadow(radius: 15)
+        .transition(
+            .move(edge: .trailing)
+            .combined(with: .scale(scale: 0.1, anchor: .topTrailing))
+        )
     }
     
     private var circleView: some View {
@@ -65,7 +105,7 @@ struct ClimateView: View {
                         .frame(width: 140, height: 140)
                         .shadow(color: .lightShadow, radius: 7, x: -7, y: -7)
                         .shadow(color: .darkShadow, radius: 7, x: 7, y: 7)
-                    )
+                )
             Circle()
                 .trim(
                     from: 0.0,
@@ -78,29 +118,29 @@ struct ClimateView: View {
                 .shadow(color: climateViewModel.selectedColor, radius: 7)
                 .frame(height: 210)
                 .rotationEffect(.degrees(-110))
-                
-
             Text(
                 "\(climateViewModel.currentCelsus)\(Constants.celsusString)"
             )
             .font(.system(size: 30, weight: .bold, design: .default))
-//            .opacity(climateViewModel.isOnClimate ? 1 : 0)
+            .opacity(climateViewModel.isOnClimate ? 1 : 0)
         }
         .padding(.top, 10)
     }
     
     private var disclosureGroupView: some View {
-        DisclosureGroup("", isExpanded: $climateViewModel.isRevealDetails) {
-            VStack(spacing: -10) {
-                acView
-                fanView
-                heatView
-                autoView
+        withAnimation {
+            DisclosureGroup("", isExpanded: $climateViewModel.isRevealDetails) {
+                VStack(spacing: -10) {
+                    acView
+                    fanView
+                    heatView
+                    autoView
+                }
             }
+            .padding()
         }
-        .padding()
     }
-
+    
     private var acView: some View {
         HStack(spacing: 20) {
             Text("Ac")
@@ -110,7 +150,6 @@ struct ClimateView: View {
                 .padding(.bottom)
             ZStack {
                 Button {
-                    
                 } label: {
                     Image(.climateButton)
                 }
@@ -133,7 +172,6 @@ struct ClimateView: View {
                 .padding(.bottom)
             ZStack {
                 Button {
-                    
                 } label: {
                     Image(.climateButton)
                 }
@@ -156,7 +194,6 @@ struct ClimateView: View {
                 .padding(.bottom)
             ZStack {
                 Button {
-                    
                 } label: {
                     Image(.climateButton)
                 }
@@ -179,7 +216,6 @@ struct ClimateView: View {
                 .padding(.bottom)
             ZStack {
                 Button {
-                    
                 } label: {
                     Image(.climateButton)
                 }
