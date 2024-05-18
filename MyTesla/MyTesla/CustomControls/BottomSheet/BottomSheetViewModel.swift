@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Вью модель для bottomsheet
 final class BottomSheetViewModel: ObservableObject {
     
     @Published var currentMenuOffsetY: CGFloat = 0.0

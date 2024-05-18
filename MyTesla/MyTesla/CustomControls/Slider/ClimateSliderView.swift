@@ -7,14 +7,13 @@
 
 import SwiftUI
 
+/// Кастомный слайдер
 struct ClimateSliderView: View {
     
     private enum Constants {
         static let dotOffsetNumber: CGFloat = 95
         static let sliderLightOffsetNumber: CGFloat = -55
     }
-    
-    // MARK: - Public property
     
     var body: some View {
         ZStack {

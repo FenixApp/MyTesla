@@ -7,28 +7,36 @@
 
 import SwiftUI
 
+/// Экран таббара
 struct MainTabBarView: View {
+    
+    private enum Constants {
+        static let carIcon = "carIcon"
+        static let chargeIcon = "chargeIcon"
+        static let geoIcon = "geoIcon"
+        static let personIcon = "personIcon"
+    }
     
     var body: some View {
         TeslaTabBarView(selection: $selection) {
             MainView()
                 .myTabItem {
-                    TabItem(iconName: "carIcon")
+                    TabItem(iconName: Constants.carIcon)
                 }
                 .opacity(selection == 0 ? 1 : 0)
-            Text("")
+            ChargeView()
                 .myTabItem {
-                    TabItem(iconName: "chargeIcon")
+                    TabItem(iconName: Constants.chargeIcon)
                 }
                 .opacity(selection == 1 ? 1 : 0)
-            Text("")
+            DevelopView()
                 .myTabItem {
-                    TabItem(iconName: "geoIcon")
+                    TabItem(iconName: Constants.geoIcon)
                 }
                 .opacity(selection == 2 ? 1 : 0)
-            Text("")
+            DevelopView()
                 .myTabItem {
-                    TabItem(iconName: "personIcon")
+                    TabItem(iconName: Constants.personIcon)
                 }
                 .opacity(selection == 3 ? 1 : 0)
         }

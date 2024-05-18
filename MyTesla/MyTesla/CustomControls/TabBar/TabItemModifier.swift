@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Модификатор для добавления вкладок таббара
 struct TabItemModifier: ViewModifier {
     let tabBarItem: TabItem
     

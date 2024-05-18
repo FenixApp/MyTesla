@@ -7,7 +7,10 @@
 
 import Foundation
 
+/// Кнопка таббара
 struct TabItem: Identifiable, Equatable {
+    /// Идентификатор
     var id = UUID()
+    /// Название картинки
     var iconName: String
 }

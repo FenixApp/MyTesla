@@ -12,7 +12,6 @@ struct MyTeslaApp: App {
     var body: some Scene {
         WindowGroup {
             TeslaLogoView()
-//            ClimateView()
                 .environment(\.colorScheme, .dark)
         }
     }

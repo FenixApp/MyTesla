@@ -7,10 +7,20 @@
 
 import SwiftUI
 
+/// Экран экрана с настройками климата
 struct ClimateView: View {
     
     private enum Constants {
         static let celsusString = "º C"
+        static let titleText = "CLIMATE"
+        static let supportText = "Tesla support"
+        static let url = "https://www.tesla.com/support"
+        static let cancelText = "Cancel"
+        static let noText = ""
+        static let acText = "Ac"
+        static let fanText = "Fan"
+        static let heatText = "Heat"
+        static let autoText = "Auto"
     }
     
     var body: some View {
@@ -42,7 +52,7 @@ struct ClimateView: View {
             } label: {
                 Image(.backButton)
             }
-            Text("CLIMATE")
+            Text(Constants.titleText)
                 .bold()
                 .foregroundStyle(.white)
                 .font(.system(size: 20))
@@ -60,16 +70,16 @@ struct ClimateView: View {
     
     private var alertView: some View {
         VStack {
-            Text("Tesla support")
+            Text(Constants.supportText)
                 .fontWeight(.bold)
                 .font(.title3)
                 .foregroundStyle(.white)
-            if let url = URL(string: "https://www.tesla.com/support") {
-                Link("Tesla support", destination: url)
+            if let url = URL(string: Constants.url) {
+                Link(Constants.supportText, destination: url)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .foregroundColor(.blue)
                     .padding(.vertical)
-                Button("Cancel") {
+                Button(Constants.cancelText) {
                     withAnimation {
                         climateViewModel.isAlertShow.toggle()
                     }
@@ -129,7 +139,7 @@ struct ClimateView: View {
     
     private var disclosureGroupView: some View {
         withAnimation {
-            DisclosureGroup("", isExpanded: $climateViewModel.isRevealDetails) {
+            DisclosureGroup(Constants.noText, isExpanded: $climateViewModel.isRevealDetails) {
                 VStack(spacing: -10) {
                     acView
                     fanView
@@ -143,7 +153,7 @@ struct ClimateView: View {
     
     private var acView: some View {
         HStack(spacing: 20) {
-            Text("Ac")
+            Text(Constants.acText)
                 .bold()
                 .foregroundStyle(.gray)
                 .frame(width: 41)
@@ -165,7 +175,7 @@ struct ClimateView: View {
     
     private var fanView: some View {
         HStack(spacing: 20) {
-            Text("Fan")
+            Text(Constants.fanText)
                 .bold()
                 .foregroundStyle(.gray)
                 .frame(width: 41)
@@ -187,7 +197,7 @@ struct ClimateView: View {
     
     private var heatView: some View {
         HStack(spacing: 20) {
-            Text("Heat")
+            Text(Constants.heatText)
                 .bold()
                 .foregroundStyle(.gray)
                 .frame(width: 41)
@@ -209,7 +219,7 @@ struct ClimateView: View {
     
     private var autoView: some View {
         HStack(spacing: 20) {
-            Text("Auto")
+            Text(Constants.autoText)
                 .bold()
                 .foregroundStyle(.gray)
                 .frame(width: 41)

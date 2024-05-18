@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Кастомный таббар
 struct TeslaTabBarView<Content: View>: View {
     
     @Binding var selection: Int
@@ -15,6 +16,8 @@ struct TeslaTabBarView<Content: View>: View {
         ZStack(alignment: .bottom) {
             content
             ZStack {
+                PlusButton()
+                    .offset(y: -55)
                 TabBarShape()
                     .fill(.black)
                     .neumorphismUnSelectedStyle()
@@ -29,11 +32,6 @@ struct TeslaTabBarView<Content: View>: View {
         .onPreferenceChange(TabItemPreferenceKey.self) { value in
             tabs = value
         }
-    }
-    
-    init(selection: Binding<Int>, @ViewBuilder content: () -> Content) {
-        _selection = selection
-        self.content = content()
     }
     
     @Namespace private var tabBarItem
@@ -70,6 +68,11 @@ struct TeslaTabBarView<Content: View>: View {
                 Spacer()
             }
         }
+    }
+    
+    init(selection: Binding<Int>, @ViewBuilder content: () -> Content) {
+        _selection = selection
+        self.content = content()
     }
 }
 

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Вью модель для экрана настроек климата
 final class ClimateViewModel: ObservableObject {
     
     @Published var isOnClimate = false
@@ -18,10 +19,6 @@ final class ClimateViewModel: ObservableObject {
     @Published var currentCelsus = 15
     @Published var circleProgress: CGFloat = 0.0
     @Published var selectedColor: Color = .topGradient
-    
-    private let sliderStep: CGFloat = 1
-    private let sliderMaxValue: CGFloat = 15
-    private let sliderWidth: CGFloat = 200
     
     func getCircleGradus() {
         circleProgress = 1.0 - ((maxCelsus - CGFloat(currentCelsus)) / minCelsus)
@@ -44,10 +41,14 @@ final class ClimateViewModel: ObservableObject {
     
     func sliderMove(value: DragGesture.Value) -> CGFloat {
         isSliderOn = true
-        let stpCnt = floorf(Float(value.location.x / sliderPxPerStep()))
-        makeMinimumValueText(sliderOffset: CGFloat(stpCnt) * sliderPxPerStep())
-        return CGFloat(stpCnt) * sliderPxPerStep()
+        let stepCount = floorf(Float(value.location.x / sliderPxPerStep()))
+        makeMinimumValueText(sliderOffset: CGFloat(stepCount) * sliderPxPerStep())
+        return CGFloat(stepCount) * sliderPxPerStep()
     }
+    
+    private let sliderStep: CGFloat = 1
+    private let sliderMaxValue: CGFloat = 15
+    private let sliderWidth: CGFloat = 200
     
     private func sliderPxPerStep() -> CGFloat {
         sliderStep * (sliderWidth / sliderMaxValue)

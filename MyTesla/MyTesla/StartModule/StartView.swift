@@ -7,7 +7,15 @@
 
 import SwiftUI
 
+/// Стартовый экран приложения
 struct StartView: View {
+    
+    private enum Constants {
+        static let hiText = "Hi"
+        static let welcomeText = "Welcome back"
+        static let unlockText = "Unlock"
+        static let lockText = "Lock"
+    }
     
     @State var isCarClose = true
     @State var isSettingsScreenShow = false
@@ -34,7 +42,7 @@ struct StartView: View {
     
     private var settingsButtonView: some View {
         NavigationLink(isActive: $isSettingsScreenShow) {
-            MainView()
+            MainTabBarView()
         } label: {
             Button {
                 isSettingsScreenShow = true
@@ -45,7 +53,7 @@ struct StartView: View {
     }
     
     private var hiTextView: some View {
-        Text("Hi")
+        Text(Constants.hiText)
             .foregroundStyle(.gray)
             .font(.system(size: 20))
             .padding(.bottom, 10)
@@ -53,11 +61,11 @@ struct StartView: View {
     }
     
     private var welcomeTextView: some View {
-            Text("Welcome back")
-                .bold()
-                .foregroundStyle(.white)
-                .font(.system(size: 35))
-                .opacity(isCarClose ? 0 : 1)
+        Text(Constants.welcomeText)
+            .bold()
+            .foregroundStyle(.white)
+            .font(.system(size: 35))
+            .opacity(isCarClose ? 0 : 1)
     }
     
     private var carImageView: some View {
@@ -77,7 +85,7 @@ struct StartView: View {
             }
         } label: {
             HStack(alignment: .center) {
-                Text(isCarClose ? "Unlock" : "Lock")
+                Text(isCarClose ? Constants.unlockText : Constants.lockText)
                     .foregroundStyle(.white)
                     .padding(.leading)
                 Spacer()
@@ -88,10 +96,28 @@ struct StartView: View {
             .padding()
             .frame(width: 180, height: 90)
             .background(
-                RoundedRectangle(cornerRadius: 50)
-                    .fill(Color("lightBackground"))
+                RoundedRectangle(cornerRadius: 40)
+                    .stroke(.black, lineWidth: 10)
+                    .blur(radius: 10)
+                    .mask(
+                        RoundedRectangle(cornerRadius: 40)
+                            .fill(
+                                LinearGradient(colors: [.darkShadow, .clear], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            )
+                    )
             )
-            .neumorphismSelectedStyle()
+            .overlay(
+                RoundedRectangle(cornerRadius: 40)
+                    .stroke(.white.opacity(0.11), lineWidth: 8)
+                    .blur(radius: 4)
+                    .offset(x: -5, y: -2)
+                    .mask(
+                        RoundedRectangle(cornerRadius: 40)
+                            .fill(
+                                LinearGradient(colors: [.clear, .black], startPoint: .top, endPoint: .bottom)
+                            )
+                    )
+            )
         }
     }
 }

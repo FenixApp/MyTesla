@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Хранение TabItem
 struct TabItemPreferenceKey: PreferenceKey {
     static var defaultValue: [TabItem] = []
     

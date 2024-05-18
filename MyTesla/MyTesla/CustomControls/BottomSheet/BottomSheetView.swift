@@ -7,10 +7,17 @@
 
 import SwiftUI
 
+/// Кастомный bottomsheet
 struct BottomSheetView: View {
     
     private enum Constants {
         static let celsusString = "º"
+        static let acOnText = "A/C is ON"
+        static let descriptionText = "Tap to turn off or swipe up for a fast setup"
+        static let powerImage = "power"
+        static let noText = ""
+        static let onText = "On"
+        static let ventText = "Vent"
     }
     
     var body: some View {
@@ -44,11 +51,11 @@ struct BottomSheetView: View {
     
     private var leadingTitleTextView: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Text("A/C is ON")
+            Text(Constants.acOnText)
                 .bold()
                 .font(.system(size: 20))
                 .foregroundStyle(.white)
-            Text("Tap to turn off or swipe up for a fast setup")
+            Text(Constants.descriptionText)
                 .foregroundStyle(.gray)
                 .lineLimit(2)
                 .frame(width: 200, alignment: .leading)
@@ -67,7 +74,7 @@ struct BottomSheetView: View {
                     climateViewModel.isOnClimate.toggle()
                 }
             } label: {
-                Image(systemName: "power")
+                Image(systemName: Constants.powerImage)
                     .font(.title3)
                     .foregroundStyle(.white)
                     .frame(width: 63, height: 63)
@@ -85,7 +92,7 @@ struct BottomSheetView: View {
     
     private var settingsButtonsView: some View {
         HStack(spacing: 30) {
-            ColorPicker("", selection: $climateViewModel.selectedColor)
+            ColorPicker(Constants.noText, selection: $climateViewModel.selectedColor)
             Spacer()
             Button {
                 withAnimation {
@@ -115,9 +122,9 @@ struct BottomSheetView: View {
     
     private var bottomTextView: some View {
         HStack {
-            Text("On")
+            Text(Constants.onText)
             Spacer()
-            Text("Vent")
+            Text(Constants.ventText)
         }
         .padding(.horizontal, 40)
     }
