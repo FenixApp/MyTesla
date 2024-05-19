@@ -7,7 +7,17 @@
 
 import SwiftUI
 
+/// Экран с меню настроек
 struct MainView: View {
+    
+    private enum Constants {
+        static let teslaText = "Tesla"
+        static let km187 = "187 km"
+        static let unlockText = "Unlock"
+        static let lockText = "Lock"
+        static let lockOpenImage = "lock.open.fill"
+        static let lockImage = "lock.fill"
+    }
     
     @State var isCarClose = false
     @State var tagSelected = 0
@@ -33,11 +43,11 @@ struct MainView: View {
     private var headerView: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("Tesla")
+                Text(Constants.teslaText)
                     .font(.system(size: 28))
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
-                Text("187 km")
+                Text(Constants.km187)
                     .font(.system(size: 17))
                     .fontWeight(.semibold)
                     .opacity(0.4)
@@ -76,18 +86,18 @@ struct MainView: View {
                     } label: {
                         Image("\(index)")
                             .resizable()
-                            .frame(width: 20, height: 20)
-                            .neumorphismSelectedCircleStyle()
+                            .frame(width: 50, height: 50)
                             .overlay(
-                            Circle()
-                                .stroke(gradient, lineWidth: 2)
-                                .opacity(tagSelected == index ? 1 : 0)
+                                Circle()
+                                    .stroke(gradient, lineWidth: 2)
+                                    .opacity(tagSelected == index ? 1 : 0)
                             )
                     }
                 }
                 
             }
         }
+        .frame(width: 300, height: 40)
         .padding()
         .background(RoundedRectangle(cornerRadius: 50).fill(.lightBackground))
         .neumorphismUnSelectedStyle()
@@ -101,18 +111,39 @@ struct MainView: View {
         } label: {
             HStack(spacing: 10) {
                 Label {
-                    Text(isCarClose ? "Lock" : "Unlock")
+                    Text(isCarClose ? Constants.lockText : Constants.unlockText)
                         .foregroundStyle(.white)
                 } icon: {
-                    Image(systemName: isCarClose ? "lock.open.fill" : "lock.fill")
+                    Image(systemName: isCarClose ? Constants.lockOpenImage : Constants.lockImage)
                         .renderingMode(.template)
                         .neumorphismSelectedCircleStyle()
                 }
             }
             .frame(width: 120)
             .padding()
-            .background(RoundedRectangle(cornerRadius: 50).fill(.lightBackground))
-            .neumorphismSelectedStyle()
+            .background(
+                RoundedRectangle(cornerRadius: 40)
+                    .stroke(.black, lineWidth: 10)
+                    .blur(radius: 10)
+                    .mask(
+                        RoundedRectangle(cornerRadius: 40)
+                            .fill(
+                                LinearGradient(colors: [.darkShadow, .clear], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            )
+                    )
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 40)
+                    .stroke(.white.opacity(0.11), lineWidth: 8)
+                    .blur(radius: 4)
+                    .offset(x: -5, y: -2)
+                    .mask(
+                        RoundedRectangle(cornerRadius: 40)
+                            .fill(
+                                LinearGradient(colors: [.clear, .black], startPoint: .top, endPoint: .bottom)
+                            )
+                    )
+            )
         }
         .frame(width: 300)
     }

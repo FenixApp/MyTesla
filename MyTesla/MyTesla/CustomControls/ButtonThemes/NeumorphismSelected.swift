@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Стиль неоморфизм для состояния "Выбрано"
 struct NeumorphismSelected: ViewModifier {
     func body(content: Content) -> some View {
         content

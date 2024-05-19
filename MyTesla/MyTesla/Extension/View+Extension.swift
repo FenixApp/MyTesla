@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Расширение для вью
 extension View {
     func neumorphismUnSelectedStyle() -> some View {
         modifier(NeumorphismUnSelected())
@@ -28,5 +29,9 @@ extension View {
                 .edgesIgnoringSafeArea(.all)
             content()
         }
+    }
+    
+    func myTabItem(_ label: () -> TabItem) -> some View {
+        modifier(TabItemModifier(tabBarItem: label()))
     }
 }

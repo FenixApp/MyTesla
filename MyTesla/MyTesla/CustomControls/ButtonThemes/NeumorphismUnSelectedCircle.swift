@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Стиль неоморфизм для круга
 struct NeumorphismUnSelectedCircle: ViewModifier {
     func body(content: Content) -> some View {
         content

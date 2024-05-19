@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Экран с заставкой приложения
 struct TeslaLogoView: View {
     
     @State var isStartViewShow = false
