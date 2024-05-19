@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Расширение для вью
 extension View {
     func neumorphismUnSelectedStyle() -> some View {
         modifier(NeumorphismUnSelected())

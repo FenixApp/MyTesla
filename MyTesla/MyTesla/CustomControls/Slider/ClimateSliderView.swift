@@ -26,10 +26,10 @@ struct ClimateSliderView: View {
                 .frame(width: 200, height: 8)
             RoundedRectangle(cornerRadius: 2)
                 .fill(climateViewModel.selectedColor)
-                .frame(width: acSliderOffset + Constants.dotOffsetNumber, height: 8)
-                .offset(x: Constants.sliderLightOffsetNumber + (acSliderOffset / 2))
+                .frame(width: acSliderOffSet + Constants.dotOffsetNumber, height: 8)
+                .offset(x: Constants.sliderLightOffsetNumber + (acSliderOffSet / 2))
             Image(.knob)
-                .offset(x: acSliderOffset, y: 5)
+                .offset(x: acSliderOffSet, y: 5)
                 .gesture(
                     DragGesture()
                         .onChanged { value in
@@ -38,7 +38,7 @@ struct ClimateSliderView: View {
                                     value.location.x <= totalWidth,
                                     value.location.x > -85
                                 {
-                                    acSliderOffset = climateViewModel.sliderMove(value: value)
+                                    acSliderOffSet = climateViewModel.sliderMove(value: value)
                                 }
                             }
                         }
@@ -47,6 +47,6 @@ struct ClimateSliderView: View {
     }
     
     @EnvironmentObject private var climateViewModel: ClimateViewModel
-    @State private var acSliderOffset: CGFloat = -85.0
+    @State private var acSliderOffSet: CGFloat = -85.0
     @State private var totalWidth: CGFloat = 115
 }
